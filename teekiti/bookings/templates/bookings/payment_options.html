@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Choose Payment Method</h2>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Pay via PesaPal</h5>
+          <a href="{% url 'initiate_pesapal_payment' event.id %}" class="btn btn-primary">Proceed with PesaPal</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Pay via M-Pesa</h5>
+          <!-- Disable the button until M-Pesa is implemented -->
+          <button class="btn btn-success" disabled>M-Pesa (Coming Soon)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

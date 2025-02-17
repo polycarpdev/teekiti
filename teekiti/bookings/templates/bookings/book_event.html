@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Book {{ event.name }}</h2>
+<form method="post">
+  {% csrf_token %}
+  <label for="seats">Number of Tickets:</label>
+  <input type="number" name="seats" min="1" max="{{ event.available_seats }}" required>
+  <button type="submit">Book Now</button>
+</form>
+{% endblock %}

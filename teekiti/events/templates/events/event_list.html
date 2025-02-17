@@ -1,0 +1,122 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+<!-- NEW FRONT-END -->
+ <!-- Hero Section -->
+ <section id="hero" class="hero section dark-background">
+
+  <img src="{% static 'teekiti/img/world-dotted-map.png' %}" alt="" class="hero-bg" data-aos="fade-in">
+
+  <div class="container">
+    <div class="row gy-4 d-flex justify-content-between">
+      <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        <h1 data-aos="fade-up">Get your Ticket in minutes</h1>
+        <p data-aos="fade-up" data-aos-delay="100">Discover a one-stop platform for all your ticket needs, from events to sports. 
+          Enjoy hassle-free booking, competitive prices, and instant access to your tickets, making your experience quick and convenient.</p>
+
+        <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+          <input type="text" class="form-control" placeholder="Find Event">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        
+
+      </div>
+
+      <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+        <img src="{% static 'teekiti/img/hero-img.webp' %}" class="img-fluid mb-3 mb-lg-0" alt="">
+      </div>
+
+    </div>
+  </div>
+
+</section><!-- /Hero Section -->
+
+<!-- Values Section -->
+<section  id="services" class="services section">
+
+
+  <!-- Section Title -->
+  <div id="upcoming" class="container section-title" data-aos="fade-up">
+    <span>Upcoming Events<br></span>
+    <h2>Upcoming Events</h2>
+  </div><!-- End Section Title -->
+
+  <div  class="container">
+
+    <div class="row gy-4">
+      {% for event in events %}
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="card">
+          <div class="card-img">
+            <img src=" {{event.poster.url}} " alt="olando" class="img-fluid">
+          </div>
+          <h3>{{ event.name }}</h3>
+          <p> 
+            <strong>Date:</strong> {{ event.date }}<br>
+          <strong>Venue:</strong> {{ event.venue }}<br>
+          <strong>Price:</strong> Ksh {{ event.price }}<br>
+          <strong>Seats Left:</strong> {{ event.available_seats }} <br>
+
+          <strong>Location:</strong>   <a target="_blank" href="{{ event.google_map_link }} ">Here</a> <br>
+
+          </p>
+          <a href="{% url 'book_event' event.id %}" style=" border: 0; color: white; background-color:#e83304 ;" class="btn btn-primary">Book Now</a>
+
+        </div>
+      </div><!-- End Card Item -->
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section><!-- /Upcoming Events Section -->
+
+<section id="services " class="services section">
+
+  <!-- Section Title -->
+  <div id="past" class="container section-title" data-aos="fade-up">
+    <span>Past Events<br></span>
+    <h2>Past Events</h2>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="card">
+          <div class="card-img">
+            <img src="{% static 'teekiti/img/past-event.jpg' %}" alt="" class="img-fluid">
+          </div>
+          <h3>Event 1</h3>
+          <p>Description
+      </div><!-- End Card Item -->
+
+
+    
+      </div><!-- End Card Item -->
+    </div>
+
+  </div>
+</section><!-- /Past Events Section -->
+
+
+
+
+
+<!-- END -->
+
+
+ 
+{% endblock %}
